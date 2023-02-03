@@ -10,12 +10,9 @@
 
 > An acronym or short name for your project.
 
+## Description (about 100 words)
 
-## Thank-The-Bus-Driver (TTBD) is a bus tracking system designed to make pubic transportation more accessible to the public. It will be used for riders to track real-time bus-stop locations and recruit and register new bus drivers. TTBD is freely avaliable to for everyone to use on the internet. The main objective is to reduce wait-times for the average rider and make public transit more efficient for everyone invloved. 
-
-Description (about 100 words)
-
-> Thank-The-Bus-Driver (TTBD) is a bus tracking system designed to make pubic transportation more accessible to the public. It will be used for riders to track real->time bus-stop locations and recruit and register new bus drivers. TTBD is freely avaliable to for everyone to use on the internet. The main objective is to reduce >wait-times for the average rider and make public transit more efficient for everyone invloved. 
+> Thank-The-Bus-Driver (TTBD) is a bus tracking system designed to make pubic transportation more accessible to the public. It will be used for riders to track real-time bus-stop locations and recruit and register new bus drivers. TTBD is freely avaliable to for everyone to use on the internet. The main objective is to reduce >wait-times for the average rider and make public transit more efficient for everyone invloved. 
 
 > A brief description of what your app will be like and why it's
 > interesting.
