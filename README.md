@@ -13,9 +13,8 @@
 //In addition, add an image or pdf document for your use-case diagram. 
 
  
+Requirements:
 
-//Requirements:
-
-//One actor per group member.
-//At least two use-cases per actor.
-//Login/Logout does not count towards the minimum.
+One actor per group member.
+At least two use-cases per actor.
+Login/Logout does not count towards the minimum.
