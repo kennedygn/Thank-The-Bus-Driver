@@ -6,7 +6,7 @@
 
 ## Description 
 
-> Thank-The-Bus-Driver (TTBD) is a bus tracking system designed to make pubic transportation more accessible to the public. It will be used for riders to track real-time bus-stop locations and recruit and register new bus drivers. TTBD is freely avaliable to for everyone to use on the internet. The main objective is to reduce wait-times for the average rider and make public transit more efficient for everyone invloved. 
+> Thank-The-Bus-Driver (TTBD) is a bus tracking system designed to make pubic transportation more accessible to the public. TTBD is freely avaliable to for everyone to use on the world wide web. The main objective is to reduce wait-times for the average rider and make public transit more efficient for everyone invloved. It is designed for riders to track real-time bus-stop locations, for administrators to recruit and register new bus drivers, and for the bus drivers to get paid efficiently and manage their route(s).
 
 
 
