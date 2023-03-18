@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Project Proposal
 
 ## Thank-The-Bus-Driver
@@ -11,3 +12,6 @@
 
 
 ![image](https://user-images.githubusercontent.com/122570019/216840444-902bf486-8429-4fc9-9276-834f7eebcbe3.png)
+=======
+# Thank-The-Bus-Driver
+>>>>>>> Stashed changes
