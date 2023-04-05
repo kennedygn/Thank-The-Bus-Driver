@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ThankTheBusDriverDriver</title>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+
+    #clock-in-message, #clock-out-message {
+      display: none;
+      color: black;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="w3-container w3-light-green w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-white w3-jumbo">Time Clock</h1>
+
+  <p>Select action from list below</p>
+
+  <form>
+    <button class="w3-black" type="button" onclick="clockIn()">Clock in</button>
+    <button class="w3-black" type="button" onclick="clockOut()">Clock out</button>
+    <span id="clock-in-message"></span>
+    <span id="clock-out-message"></span>
+  </form>
+
+  <script>
+    function clockIn() {
+      let date = new Date();
+      let time = date.toLocaleTimeString();
+      document.getElementById("clock-in-message").textContent = "You clocked in at " + time;
+      document.getElementById("clock-in-message").style.display = "inline";
+    }
+
+    function clockOut() {
+      let date = new Date();
+      let time = date.toLocaleTimeString();
+      document.getElementById("clock-out-message").textContent = "You clocked out at " + time;
+      document.getElementById("clock-out-message").style.display = "inline";
+    }
+  </script>
+</body>
+</html>
