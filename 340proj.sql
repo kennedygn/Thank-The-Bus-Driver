@@ -1,0 +1,188 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Mar 30, 2023 at 11:45 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.2.0
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `340proj`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_email` varchar(255) NOT NULL,
+  `admin_password` tinytext DEFAULT NULL,
+  `working_capital` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `altered_routes`
+--
+
+CREATE TABLE `altered_routes` (
+  `route` tinytext DEFAULT NULL,
+  `altered_route_id` int(11) NOT NULL,
+  `is_active` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `altered_stops`
+--
+
+CREATE TABLE `altered_stops` (
+  `stop` tinytext DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT NULL,
+  `altered_stop_id` int(11) NOT NULL,
+  `altered_route_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `driver`
+--
+
+CREATE TABLE `driver` (
+  `driver_email` varchar(255) NOT NULL,
+  `driver_password` tinytext DEFAULT NULL,
+  `amount_paid_total` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `driver_work`
+--
+
+CREATE TABLE `driver_work` (
+  `time_worked` double DEFAULT NULL,
+  `amount_paid` double DEFAULT NULL,
+  `route_driven` tinytext DEFAULT NULL,
+  `driver_email` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Triggers `driver_work`
+--
+DELIMITER $$
+CREATE TRIGGER `add_all_driver_payments` AFTER INSERT ON `driver_work` FOR EACH ROW update driver
+set amount_paid_total = amount_paid_total+new.amount_paid
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `subtract_amount_paid` AFTER INSERT ON `driver_work` FOR EACH ROW update admin
+set working_capital = working_capital-new.amount_paid
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rider`
+--
+
+CREATE TABLE `rider` (
+  `rider_email` varchar(255) NOT NULL,
+  `rider_password` tinytext DEFAULT NULL,
+  `available_funds` double DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_email`);
+
+--
+-- Indexes for table `altered_routes`
+--
+ALTER TABLE `altered_routes`
+  ADD PRIMARY KEY (`altered_route_id`);
+
+--
+-- Indexes for table `altered_stops`
+--
+ALTER TABLE `altered_stops`
+  ADD PRIMARY KEY (`altered_stop_id`),
+  ADD KEY `altered_route_stops` (`altered_route_id`);
+
+--
+-- Indexes for table `driver`
+--
+ALTER TABLE `driver`
+  ADD PRIMARY KEY (`driver_email`);
+
+--
+-- Indexes for table `driver_work`
+--
+ALTER TABLE `driver_work`
+  ADD KEY `driver_email` (`driver_email`);
+
+--
+-- Indexes for table `rider`
+--
+ALTER TABLE `rider`
+  ADD PRIMARY KEY (`rider_email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `altered_routes`
+--
+ALTER TABLE `altered_routes`
+  MODIFY `altered_route_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `altered_stops`
+--
+ALTER TABLE `altered_stops`
+  MODIFY `altered_stop_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `altered_stops`
+--
+ALTER TABLE `altered_stops`
+  ADD CONSTRAINT `altered_route_stops` FOREIGN KEY (`altered_route_id`) REFERENCES `altered_routes` (`altered_route_id`);
+
+--
+-- Constraints for table `driver_work`
+--
+ALTER TABLE `driver_work`
+  ADD CONSTRAINT `driver_work_ibfk_1` FOREIGN KEY (`driver_email`) REFERENCES `driver` (`driver_email`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
