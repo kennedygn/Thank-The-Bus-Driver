@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Sign up page</title>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+    </style>
+</head>
+<body>
+    <header class="w3-container w3-light-green w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-white w3-jumbo">Sign up for routes</h1>
+
+    
+    <form id="signup-form" onsubmit="return false;">
+        <ul>
+            <li>
+                <label for="name1">UNCG Campus Loop:</label>
+                <input type="text" id="name1" name="name1">
+            </li>
+            <li>
+                <label for="name2">Airport line:</label>
+                <input type="text" id="name2" name="name2">
+            </li>
+            <li>
+                <label for="name3">Battleground Ave. Shuttle:</label>
+                <input type="text" id="name3" name="name3">
+            </li>
+        </ul>
+        
+        <input class="w3-black" type="submit" value="Submit" onclick="submitForm()">
+    </form>
+    
+    <p id="thankyou-message" style="display: none;">Thank you for signing up! Please be on time to your shift!</p>
+    
+    <script>
+        function submitForm() {
+            document.getElementById("thankyou-message").style.display = "block";
+        }
+    </script>
+</body>
+</html>
