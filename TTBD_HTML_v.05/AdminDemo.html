@@ -16,47 +16,57 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
   </head>
   <body>
-<header class="w3-container w3-light-green w3-center" style="padding:128px 16px">
+  <header class="w3-container w3-light-green w3-center" style="padding:128px 16px">
     <h1 class="w3-margin w3-white w3-jumbo">Welcome to the ThankTheBusDriver</h1>
     
-    <h2>Edit routes and stops</h2>
-    <p>Use the form below to add or remove bus stops and routes:</p>
-    <form>
-      <label for="stop">Bus Stop:</label>
-      <input type="text" id="stop" name="stop"><br><br>
-      <input class="w3-black" type="submit" value="Add Stop">
-      <input class="w3-black" type="submit" value="Remove Stop"><br><br>
-      <label for="route">Route:</label>
-      <input type="text" id="route" name="route"><br><br>
-      <input class="w3-black" type="submit" value="Add Route">
-      <input class="w3-black" type="submit" value="Remove Route">
-      
-    </form>
+    <div class="w3-row">
+      <div class="w3-col s12 m4">
+        <h2>Edit routes and stops</h2>
+        <p>Use the form below to add or remove bus stops and routes:</p>
+        <form>
+          <label for="stop">Bus Stop:</label>
+          <input type="text" id="stop" name="stop"><br><br>
+          <input class="w3-black" type="submit" value="Add Stop">
+          <input class="w3-black" type="submit" value="Remove Stop"><br><br>
+          <label for="route">Route:</label>
+          <input type="text" id="route" name="route"><br><br>
+          <input class="w3-black" type="submit" value="Add Route">
+          <input class="w3-black" type="submit" value="Remove Route">
+        </form>
+      </div>
+      <div class="w3-col s12 m4">
+        <h2>Pay Drivers</h2>
+        <p>Use the form below to pay drivers:</p>
+        <form>
+          <label for="driver">Driver:</label>
+          <input type="text" id="stop" name="stop"><br><br>
+          <label for="amount">Amount:</label>
+          <input type="number" id="amount" name="amount"><br><br>
+          <input class="w3-black" type="submit" value="Pay Driver">
+        </form>
+      </div>
+      <div class="w3-col s12 m4">
+        <h2>Register/Remove Drivers</h2>
+        <p>Use the form below to recruit, register, or remove drivers:</p>
+        <form>
+          <label for="driver-name">Driver Name:</label>
+          <input type="text" id="driver-name" name="driver-name"><br><br>
+          <label for="driver-email">Driver Email:</label>
+          <input type="email" id="driver-email" name="driver-email"><br><br>
+          <label for="driver-action">Action:</label>
+          <select id="driver-action" name="driver-action">
+            <option value="recruit">Recruit</option>
+            <option value="register">Register</option>
+            <option value="remove">Remove</option>
+          </select><br><br>
+          <input class="w3-black" type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
     
-    <h2>Pay Drivers</h2>
-    <p>Use the form below to pay drivers:</p>
-    <form>
-      <label for="driver">Driver:</label>
-      <input type="text" id="stop" name="stop"><br><br>
-      <label for="amount">Amount:</label>
-      <input type="number" id="amount" name="amount"><br><br>
-      <input class="w3-black" type="submit" value="Pay Driver">
-    </form>
-    
-    <h2>Register/Remove Drivers</h2>
-    <p>Use the form below to recruit, register, or remove drivers:</p>
-    <form>
-      <label for="driver-name">Driver Name:</label>
-      <input type="text" id="driver-name" name="driver-name"><br><br>
-      <label for="driver-email">Driver Email:</label>
-      <input type="email" id="driver-email" name="driver-email"><br><br>
-      <label for="driver-action">Action:</label>
-      <select id="driver-action" name="driver-action">
-        <option value="recruit">Recruit</option>
-        <option value="register">Register</option>
-        <option value="remove">Remove</option>
-      </select><br><br>
-      <input class="w3-black" type="submit" value="Submit">
-    </form>
-  </body>
+    <button class="w3-button w3-black w3-margin-top" onclick="location.href='login.html'">Login</button>
+
+  </header>
+</body>
+
 </html>
