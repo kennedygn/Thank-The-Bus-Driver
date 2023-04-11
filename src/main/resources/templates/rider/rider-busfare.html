@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>Add to Bus Fare</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+            .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+            .fa-anchor,.fa-coffee {font-size:200px}
+            .centered {
+                display: flex;
+                justify-content: center;
+            }
+            .btn-row {
+                background-color: #f8f9fa;
+            }
+            .btn {
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <header class="w3-container w3-light-green w3-center" style="padding:128px 16px">
+                <h1 class="text-align:center;">Enter Bus Fare Amount</h1>
+            </header>
+            <div class="text-align-content: center;">
+                <form action="/rider/save" method="post">
+                    <div class="form-group">
+                        <label for="amount">Amount:</label>
+                        <p><input class="w3-input w3-border" type="number" name="fare" id="amount" placeholder="Enter amount"></p>
+                        <input type="hidden" name="id" value="1" />
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for="from">From:</label>
+                        <select id="rider-input-money" name="rider-input-money">
+                            <option value="debitorcredit">Debit/Credit Card</option>
+                            <option value="applepay">Apple Pay</option>
+                            <option value="venmoorcashapp">Venmo/CashApp</option>
+                        </select><br /><br />
+                    </div>
+                    <input type="submit" class="btn btn-primary"></input>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
