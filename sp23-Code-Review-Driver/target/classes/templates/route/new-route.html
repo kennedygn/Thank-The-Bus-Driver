@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>View Routes</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+    <style>
+        .centered {
+            display: flex;
+            justify-content: center;
+        }
+        .btn-row {
+            background-color: #f8f9fa;
+        }
+        .btn {
+            margin-right: 10px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: auto;
+            text-align: center;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h1 class="centered">Create New Route</h1>
+    <div class="centered">
+        <form method="post" th:action="@{/routes/create-route}">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"/>
+            </div>
+            <div>
+                <label for="driverName">Person Driving:</label>
+                <input type="text" id="driverName" name="personDriving"/>
+            </div>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</body>
+</html>
