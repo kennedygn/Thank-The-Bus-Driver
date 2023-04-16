@@ -1,13 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.TTBD.TTBD_final.Admin;
 
-/**
- *
- * @author kenne
- */
-public class AdminRepository {
-    
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+@Repository
+public interface AdminRepository extends JpaRepository<Admin, String>{
+    Admin findByEmail(String adminEmail);
 }
