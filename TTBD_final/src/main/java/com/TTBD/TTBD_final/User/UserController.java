@@ -1,5 +1,7 @@
 package com.TTBD.TTBD_final.User;
 
+import com.TTBD.TTBD_final.Rider.Rider;
+import com.TTBD.TTBD_final.Rider.RiderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,26 +20,23 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    RiderService riderService;
+
     @GetMapping("/greeting")
-    public String welcomePage(){
+    public String welcomePage() {
         return "user/template";
     }
-    
+
     /*In the template HTML, I tried to just simply map it to the Rider login page when the user selects 'Rider' but I think 
     it's more complicated than that. I tried -_-    -   Kennedy*/
-    /*@PostMapping("/choice")
-    public String choice(String choice) {
-        User user = userService.getChoiceById(choice);
-        String uChoice = userService.toString(choice);
-        String userChoice = user.getChoice();
-        if (user != "rider") {
-            return "/success";
-            
-        } 
-        else if(user == null){
-            return "/login";
+    @PostMapping("/role")
+    public String choice(String role) {
+        User user = userService.getRoleById(role);
+        String userChoice = user.getRole();
+        if ("rider".equals(userChoice)) {
+            return "rider/login";
         }
-        else {
-            return "/failure";
-        }*/
+        else return "user/template";
+    }
 }

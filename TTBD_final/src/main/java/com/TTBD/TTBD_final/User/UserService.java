@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserService {
+
     private UserRepository repo;
-    
-    /*public User getChoiceById(String choice){
-            return repo.getReferenceById(choice);
-        }*/
+
+    public User getRoleById(String role) {
+        return repo.getReferenceById(role);
+    }
 
     /*String toString(String choice) {
         

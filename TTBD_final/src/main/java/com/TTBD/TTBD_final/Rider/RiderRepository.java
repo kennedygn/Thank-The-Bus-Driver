@@ -4,10 +4,12 @@
  */
 package com.TTBD.TTBD_final.Rider;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 /**
  *
  * @author kenne
  */
-public class RiderRepository {
+public interface RiderRepository extends JpaRepository<Rider, Long> {
     
 }
