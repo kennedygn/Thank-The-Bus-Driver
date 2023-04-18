@@ -45,18 +45,7 @@ CREATE TABLE `altered_routes` (
   `is_active` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- --------------------------------------------------------
 
---
--- Table structure for table `altered_stops`
---
-
-CREATE TABLE `altered_stops` (
-  `stop` tinytext DEFAULT NULL,
-  `is_active` tinyint(1) DEFAULT NULL,
-  `altered_stop_id` int(11) NOT NULL,
-  `altered_route_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -126,13 +115,6 @@ ALTER TABLE `altered_routes`
   ADD PRIMARY KEY (`altered_route_id`);
 
 --
--- Indexes for table `altered_stops`
---
-ALTER TABLE `altered_stops`
-  ADD PRIMARY KEY (`altered_stop_id`),
-  ADD KEY `altered_route_stops` (`altered_route_id`);
-
---
 -- Indexes for table `driver`
 --
 ALTER TABLE `driver`
@@ -160,23 +142,13 @@ ALTER TABLE `rider`
 ALTER TABLE `altered_routes`
   MODIFY `altered_route_id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `altered_stops`
---
-ALTER TABLE `altered_stops`
-  MODIFY `altered_stop_id` int(11) NOT NULL AUTO_INCREMENT;
 
---
 -- Constraints for dumped tables
 --
 
 --
 -- Constraints for table `altered_stops`
---
-ALTER TABLE `altered_stops`
-  ADD CONSTRAINT `altered_route_stops` FOREIGN KEY (`altered_route_id`) REFERENCES `altered_routes` (`altered_route_id`);
 
---
 -- Constraints for table `driver_work`
 --
 ALTER TABLE `driver_work`
