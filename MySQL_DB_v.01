@@ -67,7 +67,6 @@ CREATE TABLE `driver` (
 
 CREATE TABLE `driver_work` (
   `time_worked` double DEFAULT NULL,
-  `amount_paid` double DEFAULT NULL,
   `route_driven` tinytext DEFAULT NULL,
   `driver_email` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
