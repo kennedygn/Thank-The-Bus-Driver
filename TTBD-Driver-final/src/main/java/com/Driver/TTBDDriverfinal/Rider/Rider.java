@@ -27,21 +27,9 @@ public class Rider {
     /*@GeneratedValue(strategy = GenerationType.IDENTITY)*/
     private long id;
     private double fare;
-    private String role;
     
-    public Rider(double fare, long id, String role) {
+    public Rider(double fare, long id) {
         this.fare = fare;
         this.id = id;
-        this.role = role;
     }
-
-    /*double getFare() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    void setFare(double updatedFare) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }*/
-    
 }
-

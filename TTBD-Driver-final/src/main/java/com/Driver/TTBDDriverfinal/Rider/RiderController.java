@@ -3,16 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.Driver.TTBDDriverfinal.Rider;
-
-import com.Driver.TTBDDriverfinal.Route.Route;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -32,6 +24,11 @@ public class RiderController {
     @Autowired
     RiderService riderService;
 
+    @GetMapping("/home")
+    public String showHomePage() {
+        return "rider/rider-homepage";
+    }
+
     @GetMapping("/all")
     public String getAmount(Model model) {
         model.addAttribute("riderList", riderService.getBusFare());
@@ -39,56 +36,40 @@ public class RiderController {
 
     }
 
-    @GetMapping("/home")
-    public String homePage(Rider amount, Model model) {
-        model.addAttribute("riderList", riderService.getBusFare());
-        riderService.save(amount);
-        return "rider/rider-homepage";
+    @GetMapping("/balance")
+    public String homePage(Model model) {
+        double balance = riderService.getFareById(1).getFare();
+        model.addAttribute("fare", balance);
+        return "rider/rider-balance";
     }
 
-    /*@GetMapping("/routes")
-    public String viewRoutes(Model model) {
-        model.addAttribute("routeList", riderService.getRoutes());
-
-        return "rider/rider-routes";
-
-    }*/
-    @PostMapping("/save")
-    public String saveFare(long id, double fare) {
-        Rider rider = riderService.getFareById(id);
-        double updatedFare = rider.getFare() + fare;
-        rider.setFare(updatedFare);
+    /*@PostMapping("/save")
+    public String saveFare(@RequestParam("fare") double fare) {
+        Rider rider = riderService.getFareById(1);
+        rider.setFare(rider.getFare() + fare);
         riderService.save(rider);
-        return "redirect:/rider/home";
+        return "redirect:/rider/balance";
+    }*/
+
+/*
+    @GetMapping("/routes")
+    public String viewRoutes(Model model) {
+       // model.addAttribute("routeList", riderService.getRoutes());
+        return "rider/rider-routes";
     }
+    */
+    
+    
+    
+ @PostMapping("/save")
+public String saveFare(@RequestParam("id") long id, @RequestParam("fare") double fare, Model model) {
+    Rider rider = riderService.getFareById(id);
+    double updatedFare = rider.getFare() + fare;
+    rider.setFare(updatedFare);
+    riderService.save(rider);
+    model.addAttribute("fare", updatedFare); // Add updated balance to model
+    return "rider/rider-balance";
+}
 
-    @GetMapping("/view-routes")
-    public String showRoutes(Model model) throws IOException {
-        String url = "https://transloc-api-1-2.p.rapidapi.com/agencies.json";
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url(url)
-                .get()
-                .addHeader("x-rapidapi-host", "transloc-api-1-2.p.rapidapi.com")
-                .addHeader("x-rapidapi-key", "d513577cadmsh1c2a1b98ad9f8aap17e90ajsn4b7faf1a3783")
-                .build();
-
-        Response response = client.newCall(request).execute();
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode root = mapper.readTree(response.body().string());
-
-        List<Route> routeList = new ArrayList<>();
-
-        JsonNode data = root.get("data");
-        for (JsonNode agencyNode : data) {
-            String shortName = agencyNode.get("short_name").asText();
-            Route route = new Route(shortName);
-            routeList.add(route);
-        }
-
-        model.addAttribute("routeList", routeList);
-        return "rider/rider-view-routes";
-    }
 
 }

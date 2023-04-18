@@ -4,12 +4,8 @@
  */
 package com.Driver.TTBDDriverfinal.Rider;
 
-/**
- *
- * @author josephcalcagno
- */
-import org.springframework.data.jpa.repository.JpaRepository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 /**
  *
  * @author kenne

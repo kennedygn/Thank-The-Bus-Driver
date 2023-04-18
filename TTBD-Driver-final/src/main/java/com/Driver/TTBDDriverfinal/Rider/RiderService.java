@@ -4,10 +4,10 @@
  */
 package com.Driver.TTBDDriverfinal.Rider;
 
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 /**
  *
  * @author kenne
@@ -32,4 +32,5 @@ public class RiderService {
     public void save(Rider rider) {
         repo.save(rider);
     }
+    
 }

@@ -26,22 +26,18 @@ public class DriverController {
         model.addAttribute("driverList", driverService.getAllDrivers());
 
         return "driver/list-drivers";
-
     }
-      @PostMapping("/save-route")
-    public String saveRoute(@ModelAttribute("driver") Driver driver, @RequestParam String routeDriving) {
-        driver.setRouteDriving(routeDriving); // set the routeDriving property of the driver object
-        driverService.saveDriver(driver); // save the updated driver object
-        return "redirect:/driver/list-drivers"; // redirect back to the driver list page
+
+    @PostMapping("/save-route")
+    public String saveRoute(@RequestParam String name, @RequestParam String routeDriving) {
+        Driver driver = new Driver(name, routeDriving);
+        driverService.saveDriver(driver);
+        return "redirect:/driver/list-drivers";
     }
-    
-@GetMapping("/time-clock")
-public String timeClock(Model model) {
-    
-    return "driver/time-clock";
-}
-    
 
-    
+    @GetMapping("/time-clock")
+    public String timeClock(Model model) {
 
+        return "driver/time-clock";
+    }
 }

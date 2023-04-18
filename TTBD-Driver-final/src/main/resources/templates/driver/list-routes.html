@@ -29,8 +29,12 @@
                             <td th:text="${route.short_name}"></td>
                             <td>
                                 <form method="post" th:action="@{/driver/save-route}" th:object="${driver}">
+                                    <div class="form-group">
+                                        <label for="driverName">Enter your name:</label>
+                                        <input type="text" class="form-control" id="driverName" name="name" required>
+                                    </div>
                                     <input type="hidden" name="routeDriving" th:value="${route.short_name}" />
-                                    <button type="submit" class="btn btn-primary">Save Route</button>
+                                    <button type="submit" class="btn btn-primary">Submit</button>
                                 </form>
                             </td>
                         </tr>

@@ -41,6 +41,7 @@
                     clearInterval(timerInterval);
                     const driver = driverService.getDriverById(driverId);
                     driver.timeWorked = elapsedTime;
+                    driver.salary += 25; // add 25 to the driver's salary
                     driverService.saveDriver(driver);
                     elapsedTimeElement.textContent = `Elapsed Time: ${formatElapsedTime(elapsedTime)}`;
                 }
