@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AdminController {
     @Autowired
     private AdminRepository adminRepository;
-    
+  
+
     @GetMapping("/AdminLogin")
     public String showLoginForm() {
         return "admin/AdminLogin";
