@@ -18,6 +18,7 @@ public class Admin {
     @Column(name = "working_capital", nullable = true)
     private double workingCapital;
 
+    public Admin(){}
     public Admin(String adminEmail, String adminPassword, double workingCapital) {
         this.adminEmail = adminEmail;
         this.adminPassword = adminPassword;
