@@ -147,7 +147,6 @@ ALTER TABLE `altered_routes`
 --
 
 --
--- Constraints for table `altered_stops`
 
 -- Constraints for table `driver_work`
 --
