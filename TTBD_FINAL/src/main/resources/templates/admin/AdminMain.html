@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ThankTheBusDriver</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+
+  </head>
+  <body>
+  <header class="w3-container w3-light-green w3-center" style="padding:128px 16px">
+    <h1 class="w3-margin w3-white w3-jumbo">Welcome Admin!</h1>
+    
+    <div class="w3-row">
+      <div class="w3-col s12 m4">
+        <h2>Edit routes </h2>
+        <p>Use the form below to add or remove routes:</p>
+        <form id="route-form">
+    <label for="route">Route:</label>
+    <input type="text" id="route" name="route"><br><br>
+    <input class="w3-black" type="submit" value="Add Route" onclick="addRoute(event)">
+    <input class="w3-black" type="submit" value="Remove Route" onclick="removeRoute(event)">
+</form>
+
+
+
+      </div>
+      <div class="w3-col s12 m4">
+        <h2>Pay Drivers</h2>
+        <p>Use the form below to pay drivers:</p>
+        <form action="/payDriver" method="post">
+    <label for="driver">Driver Email:</label>
+    <input type="text" id="driver" name="driver_email"><br><br>
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount"><br><br>
+    <input class="w3-black" type="submit" value="Pay Driver">
+</form>
+
+      </div>
+      <div class="w3-col s12 m4">
+        <h2>Register/Remove Drivers</h2>
+        <p>Use the form below to register, or remove drivers:</p>
+        <form action="/driverAction" method="post">
+    <label for="driver-email">Driver Email:</label>
+    <input type="email" id="driver-email" name="driver_email"><br><br>
+    <label for="driver-password">Driver Password:</label>
+    <input type="text" id="driver-password" name="driver_password" required><br><br>
+    <label for="driver-action">Action:</label>
+    <select id="driver-action" name="driver_action">
+        <option value="register">Register</option>
+        <option value="remove">Remove</option>
+    </select><br><br>
+    <input class="w3-black" type="submit" value="Submit">
+</form>
+
+      </div>
+    </div>
+    <script>
+        
+
+        function addRoute(event) {
+        event.preventDefault();
+        const routeName = document.getElementById("route").value;
+        fetch('/api/routes/add', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name: routeName })
+        }).then(response => {
+          if (response.ok) {
+            alert("Route added successfully");
+          } else {
+            alert("Error adding route");
+          }
+        });
+      }
+
+      function removeRoute(event) {
+        event.preventDefault();
+        const routeName = document.getElementById("route").value;
+        fetch('/api/routes/remove', { // Updated the endpoint to match the RouteController
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ name: routeName }) // Send the route name instead of ID
+        }).then(response => {
+          if (response.ok) {
+            alert("Route removed successfully");
+          } else {
+            alert("Error removing route");
+          }
+        });
+      }
+    </script>
+  </header>
+      
+</body>
+
+</html>
