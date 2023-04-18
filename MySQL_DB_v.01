@@ -72,18 +72,7 @@ CREATE TABLE `driver_work` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Triggers `driver_work`
---
-DELIMITER $$
-CREATE TRIGGER `add_all_driver_payments` AFTER INSERT ON `driver_work` FOR EACH ROW update driver
-set amount_paid_total = amount_paid_total+new.amount_paid
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `subtract_amount_paid` AFTER INSERT ON `driver_work` FOR EACH ROW update admin
-set working_capital = working_capital-new.amount_paid
-$$
-DELIMITER ;
+
 
 -- --------------------------------------------------------
 
