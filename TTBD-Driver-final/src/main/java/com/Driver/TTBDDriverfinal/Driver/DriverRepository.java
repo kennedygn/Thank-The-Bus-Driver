@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  */
 public interface DriverRepository extends JpaRepository<Driver, Long>{
     
-   // Driver findByDriverEmail(String driverEmail);
-    
+  // Driver findByDriverEmail(String driverEmail);
+   
     
 }

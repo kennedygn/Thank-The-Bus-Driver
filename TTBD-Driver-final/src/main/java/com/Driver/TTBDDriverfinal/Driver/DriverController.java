@@ -35,24 +35,6 @@ public class DriverController {
         return "redirect:/driver/list-drivers"; // redirect back to the driver list page
     }
     
-    @GetMapping("/driver-login")
-    public String driverLogin(){
-        
-        
-        return "/driver/driver-login";
-    }
-    
-    
-    
-    @PostMapping("/sign-up")
-public String signUp(@RequestParam String name, @RequestParam String routeDriving) {
-    Driver driver = new Driver(name, routeDriving);
-    driver.setRouteDriving(routeDriving);
-    driverService.saveDriver(driver);
-
-    return "redirect:/driver/list-drivers";
-}
-
 @GetMapping("/time-clock")
 public String timeClock(Model model) {
     
