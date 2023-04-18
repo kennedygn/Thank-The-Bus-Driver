@@ -11,19 +11,23 @@ public class AdminController {
     @Autowired
     private AdminRepository adminRepository;
     
-    @GetMapping("/adminLogin")
+    @GetMapping("/AdminLogin")
     public String showLoginForm() {
-        return "adminLogin";
+        return "admin/AdminLogin";
+    }
+    @GetMapping("/successAdmin")
+    public String showMainForm(){
+        return "admin/AdminMain";
     }
     @PostMapping("/adminAuth")
     public String login(@RequestParam("admin_email") String adminEmail,
                         @RequestParam("admin_password") String adminPassword) {
-        Admin admin = adminRepository.findByEmail(adminEmail);
+        Admin admin = adminRepository.findByAdminEmail(adminEmail);
         if (admin != null && adminPassword.equals(admin.getAdminPassword())) {
-            return "/success";
+            return "redirect:/successAdmin";
         } 
         else {
-            return "/AdminLogin";
+            return "redirect:/AdminLogin";
         }
     }
 }
